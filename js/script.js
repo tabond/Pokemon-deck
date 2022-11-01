@@ -1,19 +1,9 @@
-alert('Hello World');
-//use camelCase to create variables (best practice)//
-let myName = 'Bob';
-document.write(myName);
-myName = 'John Doe';
-document.write(myName);
 
-let simpleAddition = 2 + 2;
-document.write(simpleAddition);
-
-let size = 100
-let doubleSize = size * 2;
-document.write(doubleSize);
-
-let minSize = (doubleSize * 2) - (size / 2);
-document.write(minSize);
-
-let favoriteFood= "Haggis";
-document.write(favoriteFood);
+let pokemonList= [
+    { name: 'Bulbasaur', height: 7, types:['Grass', 'Poison']},
+    { name: 'Charmander', height: 6, types: ['Fire']},
+    { name: 'Squirtle', height: 5, types: ['Water']},
+    { name: 'Pidgey', height: 3, types: ['Flying', 'Normal']},
+    { name: 'Pikachu', height: 4, types: ['Electric', 'Poison']},
+    { name: 'Charizard', height: 17, types: ['Fire', 'Flying']}
+  ];
