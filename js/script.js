@@ -25,8 +25,14 @@
         sizequote =''
       
         function add(pokemon) {
+          if (typeof pokemon === 'object' && pokemon.name && pokemon.height && pokemon.types && Object.keys(pokemon).length === 3){
           pokemonList.push(pokemon);
+          console.log('new pokemon added!!')
+          } else {
+            return '${pokemon} data is incorrect. Pokemon must contain name, height and types object keys';
+          }
         }
+
         function getAll() {
           return pokemonList;
         }
@@ -38,9 +44,19 @@
       })()
 
 //how come you can log the array to the consol but not document write it
-console.log(pokemonRepository.getAll()); 
-pokemonRepository.add({ name: 'Pikachu', height: 100, type: 'Electric' });
+console.log(pokemonRepository.add({name: 'Portlander', height: 100, types: ['electric', 'fire']}));
 console.log(pokemonRepository.getAll());
+//not sure why this doesn't return the object keys to the console just the object number...? 
+//(I assume it is down to the object contents being concealed in the iife)
+//console.log(Object.keys(pokemonRepository.getAll()));
+//console.log(Object.values(pokemonRepository.getAll()));
+//console.log(Object.entries(pokemonRepository.getAll()));
+
+
+function filterpokemon (query) {
+  return pokemonRepository.getAll().filter(function (pokemon){
+  return pokemon.name.toLowerCase().indexOf(query.toLowerCase())>-1;
+});}
+
+console.log(filterpokemon ('gul')); //returns pidgey and Pikachu
 pokemonRepository.getAll().forEach(pokemon_detail);
-
-
