@@ -1,18 +1,4 @@
 
-  function pokemon_detail(pokemon) {
-    if (pokemon.height > 6) {
-        sizequote = " - phwaaa thats a big one!";
-    } else {
-            sizequote = " - ahhh cute! :)";
-        }
-
-    document.write([
-        pokemon.name +', '+ 'Height =' + pokemon.height + sizequote 
-    ]);
-
-    document.write("<br><br>");
-}
-
       let pokemonRepository = (function () {
         let pokemonList = [
             { name: 'Bulbasaur', height: 7, types:['Grass', 'Poison']},
@@ -22,12 +8,15 @@
             { name: 'Squirtle', height: 5, types: ['Water']},
             { name: 'Pidgey', height: 3, types: ['Flying', 'Normal']},
         ];
-        sizequote =''
       
         function add(pokemon) {
-          if (typeof pokemon === 'object' && pokemon.name && pokemon.height && pokemon.types && Object.keys(pokemon).length === 3){
+          if (typeof pokemon === 'object' && 
+          pokemon.name && 
+          pokemon.height && 
+          pokemon.types
+          ){
           pokemonList.push(pokemon);
-          console.log('new pokemon added!!')
+          console.log('new pokemon added!!');
           } else {
             return '${pokemon} data is incorrect. Pokemon must contain name, height and types object keys';
           }
@@ -36,27 +25,36 @@
         function getAll() {
           return pokemonList;
         }
-      
+
+        function search (query) {
+          return pokemonRepository.getAll().filter(function (pokemon){
+          return pokemon.name.toLowerCase().indexOf(query.toLowerCase())>-1;
+        });}
+
         return {
           add: add,
           getAll: getAll,
+          search: search,
         };
       })()
 
-//how come you can log the array to the consol but not document write it
 console.log(pokemonRepository.add({name: 'Portlander', height: 100, types: ['electric', 'fire']}));
 console.log(pokemonRepository.getAll());
-//not sure why this doesn't return the object keys to the console just the object number...? 
-//(I assume it is down to the object contents being concealed in the iife)
-//console.log(Object.keys(pokemonRepository.getAll()));
-//console.log(Object.values(pokemonRepository.getAll()));
-//console.log(Object.entries(pokemonRepository.getAll()));
+console.log(pokemonRepository.search ('p')); //returns pidgey and Pikachu
 
+pokemonRepository.getAll().forEach(function (pokemon) {
+  let sizequote ="";
 
-function filterpokemon (query) {
-  return pokemonRepository.getAll().filter(function (pokemon){
-  return pokemon.name.toLowerCase().indexOf(query.toLowerCase())>-1;
-});}
+  if (pokemon.height > 6) {
+      sizequote = " - phwaaa thats a big one!";
+  } else {
+          sizequote = " - ahhh cute! :)";
+      }
 
-console.log(filterpokemon ('gul')); //returns pidgey and Pikachu
-pokemonRepository.getAll().forEach(pokemon_detail);
+  document.write([
+      pokemon.name +', '+ 'Height =' + pokemon.height + sizequote 
+  ]);
+
+  document.write("<br><br>");
+});
+
