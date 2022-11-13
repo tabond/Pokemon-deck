@@ -84,7 +84,13 @@
     transform: translate(-50%, -50%);
    }
 
+.loading{
+  display: contents;
+}
 
+.hidden{
+display:none;
+}
 
   .navigation__logo {
     position:absolute;
