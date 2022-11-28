@@ -15,21 +15,32 @@
     <title>Simple JS App</title>
   </head>
   <body>
-    <nav id="navbar-example2" class="navbar navbar-light bg-light">
+    <nav id="navbar-example2" class="navbar navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">Pokedex</a>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" href="#fifty_percent">50%</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#onehundred_percent">100%</a>
-        </li>
-      </ul>
+      <form class="form-inline">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
+      </form>
     </nav>
 
-    <h1>Pokedex</h1>
-    <div class="loading">Catching them all...</div>
-    <ul class="list-group"></ul>
+    <div class="d-flex align-items-center loader">
+      <strong class="loading">Loading...</strong>
+      <div
+        class="spinner-border ml-auto"
+        role="status"
+        aria-hidden="true"
+      ></div>
+    </div>
+    <div class="container-fluid">
+      <ul class="row"></ul>
+    </div>
 
     <!-- Modal -->
 
@@ -39,7 +50,7 @@
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampeModallabel"
-      aria-hidden="'true"
+      aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -62,32 +73,12 @@
               class="btn btn-secondary"
               data-dismiss="modal"
             >
-              Close
+              Back to Pokedex
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
-    <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-      <h4 id="fifty_percent">50%</h4>
-      <p>...</p>
-      <h4 id="onehundred_percent">100%</h4>
-      <p>...</p>
-    </div>
-    <!--Button Trigger Modal
-
-    <button
-      type="button"
-      class="pokemon_list btn btn-primary list-group-item list-group-item-action"
-      datatoggle="modal"
-      data-target="#pokemonModal"
-    >
-      Pokemon-name
-    </button>
-
-    <div id="modal_container"></div>
-    -->
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.js"
