@@ -15,7 +15,7 @@
     <title>Simple JS App</title>
   </head>
   <body>
-    <nav id="navbar-example2" class="navbar navbar-dark bg-dark fixed-top">
+    <nav id="navbar" class="navbar navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">Pokedex</a>
       <form class="form-inline">
         <input
@@ -23,12 +23,25 @@
           type="search"
           placeholder="Search"
           aria-label="Search"
+          id="search_input"
         />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           Search
         </button>
       </form>
     </nav>
+
+    <!--
+<div class="input-group">
+  <div class="form-outline">
+    <input id="search-focus" type="search" id="form1" class="form-control" />
+    <label class="form-label" for="form1">Search</label>
+  </div>
+  <button type="button" class="btn btn-primary">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+-->
 
     <div class="d-flex align-items-center loader">
       <strong class="loading">Loading...</strong>
@@ -39,7 +52,7 @@
       ></div>
     </div>
     <div class="container-fluid">
-      <ul class="row"></ul>
+      <ul class="row" id="poke_doc"></ul>
     </div>
 
     <!-- Modal -->

@@ -35,7 +35,7 @@ let pokemonRepository = (function () {
       );
       dexImage.attr("src", pokemon.imageUrlFront);
       let moreButton = $(
-        '<button type= "button" class="btn btn-primary" data-target= "#pokemonModal" datatoggle="modal">?!?</button>'
+        '<button type= "button" class="btn btn-primary" data-target= "#pokemonModal" datatoggle="modal">poke?</button>'
       );
       let buttonTitle = $(
         "<h2 class='heading-name' id='heading_list'>" +
@@ -158,6 +158,17 @@ let pokemonRepository = (function () {
   $(document).ready(function () {
     $(".loading").hide();
     $(".spinner-border").hide();
+  });
+
+  ////search bar//////
+
+  $(document).ready(function () {
+    $("#search_input").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#poke_doc *").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
   });
 
   /////

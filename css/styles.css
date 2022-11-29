@@ -80,8 +80,8 @@ color:var(--nav-text-change);
 
   .btn-primary{
     position:relative;
-    top: 50%;
-    left: -11%;
+    top: 47%;
+    left: -4%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
    }
