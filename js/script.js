@@ -26,6 +26,8 @@ let pokemonRepository = (function () {
   /// creating each pokemon button
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
+      /*global $*/
+      //eslint no undef
       let pokemonMaster = $(".row");
       let pokedex = $(
         '<li class="list-group-item col-md-2" id = "pokelist" data-toggle="modal" data-target="#pokemonModal"></li>'
@@ -75,6 +77,7 @@ let pokemonRepository = (function () {
     imageElementBack.attr("src", pokemon.imageUrlBack);
     let heightElement = $("<p >" + "Height: " + pokemon.height + "</p>");
     let weightElement = $("<p>" + "Weight: " + pokemon.weight + "</p>");
+    // eslint-disable-next-line no-undef
     let typesElement = $("<p>" + "Type: " + pokemon.types + "</p>");
 
     //   let abilitiesElement = $(
@@ -88,24 +91,6 @@ let pokemonRepository = (function () {
     modalBody.append(weightElement);
     modalBody.append(typesElement);
     //modalBody.append(abilitiesElement);
-
-    modalBody.addEventListener("click", (e) => {
-      let target = e.target;
-      if (target === modalContainer) {
-        hideModal();
-      }
-    });
-
-    window.addEventListener("keydown", (e) => {
-      let modalContainer = document.querySelector("#modal_container");
-      if (
-        e.key === "Escape" &&
-        modalContainer.classList.contains("is-visible")
-      ) {
-        hideModal();
-      }
-    });
-    console.log(pokemon);
   }
   /// pulling data from repo and assigning variables
 
@@ -142,7 +127,7 @@ let pokemonRepository = (function () {
           item.types.push(details.types[i].type.name);
         }
       })
-      .catch(function (e) {
+      .catch(function () {
         console.error("we have a problem: ${error)");
       });
   }
@@ -190,3 +175,18 @@ pokemonRepository.loadList().then(() => {
     pokemonRepository.addListItem(pokemon);
   });
 });
+
+{
+  ("env");
+  {
+    ("es6");
+    true, "browser";
+    true;
+  }
+  ("extends");
+  ["eslint:recommended"], "rules";
+  {
+    ("quotes");
+    ["error", "single"];
+  }
+}
